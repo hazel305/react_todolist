@@ -4,6 +4,14 @@ import { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Todo from './components/Todo';
+// Import Swiper React components
+import { Navigation, Pagination} from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { Nav } from 'react-bootstrap';
 
 function App() {
   // window.localStorage.setItem("name","푸바오"); //저장
@@ -99,7 +107,21 @@ const [todoId, setTodoId] = useState(2);
       <div>
 
         <h2>swiper JS</h2>
-        
+        <Swiper
+          modules={[Pagination,Navigation]}
+          spaceBetween={50}
+          slidesPerView={1}
+          onSlideChange={() => console.log('slide change')}
+          onSwiper={(swiper) => console.log(swiper)}
+          pagination={{ clickable: true }}
+          navigation
+        >
+          <SwiperSlide>Slide 1</SwiperSlide>
+          <SwiperSlide>Slide 2</SwiperSlide>
+          <SwiperSlide>Slide 3</SwiperSlide>
+          <SwiperSlide>Slide 4</SwiperSlide>
+          
+        </Swiper>
       </div>
     </div>
   );

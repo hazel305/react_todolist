@@ -1,0 +1,9 @@
+.swiper{
+  height: 300px;
+
+}
+.swiper-slide{
+  background: #ebebeb;
+  font-size: 40px;
+  display: flex;
+}
