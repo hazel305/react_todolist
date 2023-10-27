@@ -94,6 +94,13 @@ const [todoId, setTodoId] = useState(2);
       <div>
         {todos}
       </div>
+
+
+      <div>
+
+        <h2>swiper JS</h2>
+        
+      </div>
     </div>
   );
 }
