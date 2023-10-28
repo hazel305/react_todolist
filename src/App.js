@@ -11,7 +11,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { Nav } from 'react-bootstrap';
+
 
 function App() {
   // window.localStorage.setItem("name","푸바오"); //저장
@@ -104,7 +104,7 @@ const [todoId, setTodoId] = useState(2);
       </div>
 
 
-      <div>
+      <div className='sw'>
 
         <h2>swiper JS</h2>
         <Swiper

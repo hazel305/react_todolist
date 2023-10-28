@@ -7,3 +7,18 @@
   font-size: 40px;
   display: flex;
 }
+
+.sw{
+  margin-top: 200px;
+}
+
+.form-control{
+  display: inline-block !important;
+  width: auto !important;
+}
+
+
+
+.hidden{
+  display: none;
+}
