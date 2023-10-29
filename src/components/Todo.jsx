@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // import Form from 'react-bootstrap/Form';
 
-const Todo = ({item, deleteTodo}) => {
+const Todo = ({item, deleteTodo,update}) => {
     const [isChecked, setIsChecked] = useState(false);
     const [mode, setMode] = useState('read');
     const [text,setText] = useState(item.text);
@@ -37,10 +37,16 @@ const Todo = ({item, deleteTodo}) => {
     const handleEdit=(val)=>{
       console.log(val);
       console.log(text)
+      setText(val);
     }
 
     const changeMode = (val)=>{
        setMode(val); 
+    }
+
+    const updateTodo = ()=>{
+        update(item.id,text)
+        changeMode('read');
     }
     return (
         <div className="form-check">
@@ -49,12 +55,12 @@ const Todo = ({item, deleteTodo}) => {
             <label className={className} style={deco} htmlFor={`todo${item.id}`}>
                 {item.text}
             </label>
-            <form className={formClass}>
+            <form className={formClass} onSubmit={updateTodo}>
             <input className="form-control" type="text" value={text} onChange={(e)=>{
                 handleEdit(e.target.value);
                 console.log(text);
             }}/> 
-            <button type="button" className="btn btn-primary btn-sm mx-2" onClick={todoEdit}>Update</button>
+            <button type="submit" className="btn btn-primary btn-sm mx-2">Update</button>
             <button type="button" className="btn btn-warning btn-sm mx-2" onClick={() => changeMode('read')}>Cancel</button>
             </form>
             <button type="button" className="btn btn-secondary btn-sm mx-2" onClick={todoEdit}>Edit</button>

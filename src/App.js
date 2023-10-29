@@ -21,7 +21,7 @@ function App() {
 
 
 
-const [todoId, setTodoId] = useState(2);
+const [todoId, setTodoId] = useState(0);
   const [todo, setTodo] = useState([
     { id: 1, text: "learn chapter1", checked: false },
     { id: 2, text: "learn chapter2", checked: false },
@@ -42,7 +42,10 @@ const [todoId, setTodoId] = useState(2);
       window.localStorage.getItem('todo');
       //값이 있다면 할일
       const todoObj = JSON.parse(todoListFromStorage);
+      let lastId = todoObj[todoObj.length -1 ].id;
       setTodo(todoObj);
+      setTodoId(lastId)
+      console.log(todoObj);
     }
   }
 
@@ -56,6 +59,21 @@ const [todoId, setTodoId] = useState(2);
     newTodos.splice(index, 1);
     setTodo(newTodos);
   };
+
+  const update = (id, val)=>{
+    let newTodos = [...todo];
+    let index = newTodos.findIndex((item) => item.id === id);
+    newTodos[index]= {id:id, text:val, checked:false}
+    setTodo(newTodos);
+   
+  }
+
+    let todos = todo.map((item) => (
+      <Todo key={item.id} item={item} deleteTodo={deleteTodo} update={update} />
+    ));
+  
+
+ 
 
   let addTodo = (item) => {
     let newTodos = [...todo];
@@ -82,10 +100,10 @@ const [todoId, setTodoId] = useState(2);
     addTodo(e.target.todo.value);
   }
 
-  let todos = todo.map((item) => (
-    <Todo key={item.id} item={item} deleteTodo={deleteTodo} />
-  ));
 
+
+
+ 
   return (
     <div className="container">
       <h2>todo List</h2>
